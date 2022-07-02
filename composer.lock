@@ -4,8 +4,34 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a0b7ed4564cfd7cf4493939fef5cf01",
+    "content-hash": "a5211c2e9e7977a04f889b865e3ea64b",
     "packages": [
+        {
+            "name": "alexfed/categoryproducts",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saint-father/categoryproducts.git",
+                "reference": "314844f4b1016649be86fa1bc8933fbb419ed316"
+            },
+            "type": "project,",
+            "autoload": {
+                "psr-4": {
+                    "Alexfed\\Categoryproducts\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Fedorov",
+                    "email": "saintfather1@yandex.ru"
+                }
+            ],
+            "description": "Newbe test task for products and categories relations.",
+            "time": "2022-07-02T09:25:09+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.1.1",
