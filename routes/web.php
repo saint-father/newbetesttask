@@ -1,6 +1,5 @@
 <?php
 
-use Alexfed\Categoryproducts\Greetr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/greet/{name}', function ($sName) {
-    $oGreet = new Greetr();
-    return $oGreet->greet($sName);
 });
