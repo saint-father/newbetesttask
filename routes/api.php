@@ -18,6 +18,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('products', 'Alexfed\Categoryproducts\Http\Controllers\ProductController');
+    Route::apiResource('categories', 'Alexfed\Categoryproducts\Http\Controllers\CategoryController');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('get-user', [AuthController::class, 'userInfo']);
 });
