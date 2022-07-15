@@ -8,6 +8,6 @@
 </p>
 
 ## About "newbetesttask" repo
-This project requires <a href="https://github.com/saint-father/categoryproducts" >saint-father/categoryproducts</a> module. 
-"composer install" command will install it.
-Then run "php artisan migrate" to get necessary DB tables.
+<p>This project requires <a href="https://github.com/saint-father/categoryproducts" >saint-father/categoryproducts</a> module. </p>
+<p>"composer install" command will install it.</p>
+<p>Then run "php artisan migrate" to get necessary DB tables.</p>
