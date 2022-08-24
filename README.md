@@ -7,7 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About "newbetesttask" repo
-<p>This project requires <a href="https://github.com/saint-father/categoryproducts" >saint-father/categoryproducts</a> module. </p>
-<p>"composer install" command will install it.</p>
-<p>Then run "php artisan migrate" to get necessary DB tables.</p>
+## About Project
+
+This is the test-project (newbe task).
+
+### Dependancies
+
+- **[Categoryproducts package](https://github.com/saint-father/categoryproducts)**
+
+## License
+
+This is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
