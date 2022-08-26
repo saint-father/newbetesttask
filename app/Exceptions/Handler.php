@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use ErrorException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -28,14 +31,33 @@ class Handler extends ExceptionHandler
     ];
 
     /**
+     * Extend "unauthenticated" exception
+     *
+     * @param $request
+     * @param AuthenticationException $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws TickerException
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->wantsJson()) {
+            throw new TickerException('Invalid token', JsonResponse::HTTP_FORBIDDEN);
+        }
+
+        return parent::unauthenticated($request, $exception);
+    }
+
+    /**
      * Register the exception handling callbacks for the application.
      *
      * @return void
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (ErrorException $e, $request) {
+            if ($request->wantsJson()) {
+                throw new TickerException('Something went wrong', JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
         });
     }
 }

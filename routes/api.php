@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TickerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 /*
@@ -17,7 +18,9 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('products', 'Alexfed\Categoryproducts\Http\Controllers\ProductController');
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('get-user', [AuthController::class, 'userInfo']);
+    Route::group(['prefix' => 'v1'], function () {
+        Route::match(array('GET', 'POST'), '', TickerController::class);
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('get-user', [AuthController::class, 'userInfo']);
+    });
 });
