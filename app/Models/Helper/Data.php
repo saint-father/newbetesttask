@@ -81,6 +81,13 @@ class Data
                 $this->convertMethod = self::SELL_CONVERT_METHOD;
             } elseif (!empty($this->currencyFrom)) {
                 $this->currency = $this->currencyFrom;
+                
+                if ($this->value < 0.01) {
+                    throw new TickerException(
+                        __(":cur amount too small", ['cur' => $this->currencyFrom]),
+                        JsonResponse::HTTP_BAD_REQUEST
+                    );
+                }
             } else {
                 throw new TickerException('Incorrect request data', JsonResponse::HTTP_BAD_REQUEST);
             }
