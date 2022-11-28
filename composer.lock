@@ -4,18 +4,19 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37d732c5ddcd0ae742228ab15aa3d3c0",
+    "content-hash": "017449daf2ae093ce49b102fc5dc3300",
     "packages": [
         {
             "name": "alexfed/categoryproducts",
-            "version": "0.0.2",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/saint-father/categoryproducts.git",
-                "reference": "c57bb2797e0adba263001085242261e1d54813f3"
+                "reference": "44e564404a83f503964ccff6a7bbb703a59271c3"
             },
             "require": {
-                "laravel/passport": "*"
+                "laravel/passport": "*",
+                "php": "^7.1"
             },
             "type": "project,",
             "autoload": {
@@ -33,7 +34,7 @@
                 }
             ],
             "description": "Newbe test task for products and categories relations.",
-            "time": "2022-07-06T15:14:50+00:00"
+            "time": "2022-07-14T15:43:09+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -9265,5 +9266,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.3.0"
 }
