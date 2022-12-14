@@ -16,10 +16,10 @@ class ParserController extends Controller
         $loop = Loop::get();
         $client = new Browser($loop);
 
-        $parser = new Parser($client);
+        $parser = new Parser($client, $loop);
         $parser->parse([
-            'http://www.imdb.com/title/tt1270797/',
-            'http://www.imdb.com/title/tt2527336/'
+            'https://start.ru/watch/vampiry-sredney-polosy?utm_source=kinopoisk_special&utm_medium=cpd&utm_campaign=vampiry-sredney-polosy_2_main_ru',
+            'https://start.ru/watch/franshiza-posledniy-bogatyr/season-1',
         ], 3);
 
         $loop->run();

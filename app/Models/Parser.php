@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Clue\React\Buzz\Browser;
+use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
+use React\EventLoop\LoopInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Parser
@@ -14,13 +16,19 @@ class Parser
     private $client;
 
     /**
+     * @var LoopInterface
+     */
+    private $loop;
+
+    /**
      * @var array
      */
     private $parsed = [];
 
-    public function __construct(Browser $client)
+    public function __construct(Browser $client, LoopInterface $loop)
     {
         $this->client = $client;
+        $this->loop = $loop;
     }
 
     public function parse(array $urls = [], $timeout = 5)
@@ -42,15 +50,17 @@ class Parser
         $crawler = new Crawler($html);
 
         $title = trim($crawler->filter('h1')->text());
-        $genres = $crawler->filter('[data-testid="genres"] span')->extract(['_text']);
+        $genres = $crawler->filter('span span a')->extract(['_text']);
+        $release = Arr::pull($genres, 0);
         $description = trim(
-            $crawler->filter('[data-testid="plot-l"]')->text()
+            $crawler->filter('[class^="Description_product__description-text"]')->text()
         );
 
         return [
-            'title'        => $title,
-            'genres'       => $genres,
-            'description'  => $description,
+            'title'         => $title,
+            'genres'        => $genres,
+            'description'   => $description,
+            'release'       => $release,
         ];
     }
 
