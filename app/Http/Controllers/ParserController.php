@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Parser;
 use App\Models\Task;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use React\EventLoop\Loop;
 use React\EventLoop\LoopInterface;
 
 class ParserController extends Controller
 {
+    /**
+     * Bind EventLoop and initialize Parser, parse remote pages in separated streams
+     *
+     * @return void
+     * @throws BindingResolutionException
+     */
     public function index()
     {
         app()->bind(LoopInterface::class, function (){
