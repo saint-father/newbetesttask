@@ -10,28 +10,35 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class Parser
 {
-    /**
-     * @var Browser
-     */
+    /** @var Browser */
     private $client;
 
-    /**
-     * @var LoopInterface
-     */
+    /** @var LoopInterface */
     private $loop;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $parsed = [];
 
+    /**
+     * Parser constructor
+     *
+     * @param Browser $client
+     * @param LoopInterface $loop
+     */
     public function __construct(Browser $client, LoopInterface $loop)
     {
         $this->client = $client;
         $this->loop = $loop;
     }
 
-    public function parse(array $urls = [], $timeout = 5)
+    /**
+     * Prepare "promise" as a Browser content parsing result with time-limit of execution
+     *
+     * @param array $urls
+     * @param $timeout
+     * @return void
+     */
+    public function parse(array $urls = [], int $timeout = 5)
     {
         foreach ($urls as $url) {
             $promise = $this->client->get($url)->then(
@@ -45,6 +52,12 @@ class Parser
         }
     }
 
+    /**
+     * Web-page content parsing by Crawler features
+     *
+     * @param $html
+     * @return array
+     */
     public function extractFromHtml($html)
     {
         $crawler = new Crawler($html);
@@ -64,9 +77,13 @@ class Parser
         ];
     }
 
+    /**
+     * Parsing result getter
+     *
+     * @return array
+     */
     public function getMovieData()
     {
         return $this->parsed;
     }
-
 }
