@@ -44,8 +44,22 @@ This is open-sourced software licensed under the [MIT license](https://opensourc
     - DB_PASSWORD=123
 - Save and close .env
 - Install Laravel modules and dependencies:
-    - composer install
-    - composer require alexfed/categoryproducts:^0.0.5
+```console
+composer install
+```
+Add "categoryproducts" repository to composer.json:
+```json
+"repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/saint-father/categoryproducts.git"
+        }
+    ],
+```
+Install the module:
+```console
+composer require alexfed/categoryproducts:dev-master#v0.0.6
+```
 - Generate application key:
     - php artisan key:generate
 - Install Laravel user authorization and management module:
