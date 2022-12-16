@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "alexfed/categoryproducts": "^0.0.5",
+        "alexfed/categoryproducts": "dev-feature/NTT-create-test-package",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

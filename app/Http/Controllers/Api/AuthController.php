@@ -47,6 +47,44 @@ class AuthController extends Controller
      * @param Request $request
      * @return Application|ResponseFactory|Response
      */
+    /**
+     * @OA\Post(
+     * path="/login",
+     * summary="Sign in",
+     * description="Login by email, password",
+     * operationId="authLogin",
+     * tags={"auth"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="Pass user credentials",
+     *    @OA\JsonContent(
+     *       required={"email","password"},
+     *       @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+     *       @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
+     *       @OA\Property(property="persistent", type="boolean", example="true"),
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=200,
+     *    description="Authorized successfully ("token" is displayed)",
+     *    @OA\JsonContent(
+     *       @OA\Property(
+     *          property="token",
+     *          type="string",
+     *          example="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1N...2MTgOylL-mzyqzdjWz7MkI"
+     *       )
+     *    )
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="User does not exist"
+     * ),
+     * @OA\Response(
+     *    response=401,
+     *    description="Password missmatch"
+     * )
+     * )
+     */
     public function login (Request $request)
     {
         /** @var User $user */
